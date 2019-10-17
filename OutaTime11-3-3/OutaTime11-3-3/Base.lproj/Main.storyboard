@@ -183,8 +183,6 @@
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="TWI-Ri-7q1">
                                 <rect key="frame" x="0.0" y="320" width="414" height="256"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" red="0.88821648320000002" green="0.32062744069999999" blue="0.31437832110000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="256" id="MDn-8v-42h"/>
                                 </constraints>
@@ -213,6 +211,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
+                        <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="TWI-Ri-7q1" firstAttribute="centerY" secondItem="iAv-QF-mIL" secondAttribute="centerY" id="d1v-FG-a7T"/>
                             <constraint firstItem="TWI-Ri-7q1" firstAttribute="trailing" secondItem="rSf-Ri-EpH" secondAttribute="trailing" id="uGf-3x-Fxz"/>
