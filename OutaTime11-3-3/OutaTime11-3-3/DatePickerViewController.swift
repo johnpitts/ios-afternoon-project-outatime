@@ -19,6 +19,9 @@ class DatePickerViewController: UIViewController {
         super.viewDidLoad()
 
         // potentially preset the picker to something
+        //datePicker.tintColor = .white
+        datePicker.backgroundColor = .black
+        datePicker.setValue(UIColor.green, forKey: "textColor")
     }
     
     
