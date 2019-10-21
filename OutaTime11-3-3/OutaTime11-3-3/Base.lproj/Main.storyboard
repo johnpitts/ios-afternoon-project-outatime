@@ -181,7 +181,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="TWI-Ri-7q1">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="TWI-Ri-7q1">
                                 <rect key="frame" x="0.0" y="320" width="414" height="256"/>
                                 <color key="tintColor" red="0.246068645" green="0.68573416099999995" blue="0.23669699199999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -190,8 +190,14 @@
                                 <date key="date" timeIntervalSinceReferenceDate="592954838.47559404">
                                     <!--2019-10-16 21:40:38 +0000-->
                                 </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-3187256400">
+                                    <!--1900-01-01 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="624708000">
+                                    <!--2020-10-18 10:00:00 +0000-->
+                                </date>
                             </datePicker>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZX-3t-EBH">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pZX-3t-EBH">
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
@@ -212,7 +218,6 @@
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TWI-Ri-7q1" firstAttribute="centerY" secondItem="iAv-QF-mIL" secondAttribute="centerY" id="d1v-FG-a7T"/>

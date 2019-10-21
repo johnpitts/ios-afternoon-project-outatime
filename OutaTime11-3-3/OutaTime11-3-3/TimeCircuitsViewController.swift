@@ -20,19 +20,33 @@ class TimeCircuitsViewController: UIViewController {
     @IBOutlet weak var presentTimeLabel: UILabel!
     @IBOutlet weak var speedLabel: UILabel!
     
-    var mph: Int = 0
+    // NOTE:  TimeInterval class is in seconds
+    
+    var timer: Timer?
+    private var duration: TimeInterval? = 90.0
+    private var stopDate: Date? = nil
+    
+    var mph: Double = 0.0
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MON dd year"
+        formatter.timeStyle = .none
+        formatter.dateFormat = "MMM dd YYYY"
+        return formatter
+    }
+    
+    var numberFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
         return formatter
     }
     
 
     override func viewDidLoad() {
-        super.viewDidLoad()
         
-        presentTimeLabel.text = String(describing: Date())
+        super.viewDidLoad()
+        let date = Date()
+        presentTimeLabel.text = dateFormatter.string(from: date).capitalized
         speedLabel.text = "\(mph) m.p.h."
         lastTimeDepartedLabel.text = "_ _ _  _ _  _ _ _ _"
     }
@@ -43,11 +57,34 @@ class TimeCircuitsViewController: UIViewController {
     }
     
     private func startTimer() {
-        let timer = Timer(timeInterval: 0.1, repeats: true, block: updateSpeed(timer:))
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: update(timer:))
+        
+        // THIS CODE RUNS BEFORE the block{closure/update} runs
+        stopDate = Date(timeIntervalSinceNow: 88.1)
+        //timer?.fire()
+        print("activated timer")
     }
     
-    private func updateSpeed(timer: Timer) -> Void {
-        print("update the mph textfield with mph counting upwards")
+    private func update(timer: Timer) -> Void {      //this runs continuously with timer, hence 'block'
+        
+
+        if let stopDate = stopDate {
+            let currentTime = Date()
+            if currentTime <= stopDate {
+                let dateInterval = DateInterval(start: currentTime, end: stopDate)
+                mph = 88.0 - dateInterval.duration
+                print(mph)
+                speedLabel.text = "\(mph) m.p.h."
+            } else {
+                timer.invalidate()
+                lastTimeDepartedLabel.text = presentTimeLabel.text
+                presentTimeLabel.text = destinationDateLabel.text
+                // show an alert with title "Time Travel Successful" and a message that says "Your new date is (present time)"
+                speedLabel.text = "0 m.p.h."
+                print("show alert controller")
+            }
+        }
     }
     
     
@@ -64,8 +101,8 @@ class TimeCircuitsViewController: UIViewController {
 extension TimeCircuitsViewController: DatePickerDelegate {
     
     func destinationDateWasChosen(date: Date) {
-        #warning("this will pass the date chosen in DatePickerVC to this file")
-        destinationDateLabel.text = "Mar 15 1970"
+        destinationDateLabel.text = dateFormatter.string(from: date)
+        view.reloadInputViews()
     }
 }
 

@@ -14,14 +14,15 @@ class DatePickerViewController: UIViewController {
     
     var delegate: DatePickerDelegate?
     
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // potentially preset the picker to something
-        //datePicker.tintColor = .white
+        datePicker.setDate(Date(), animated: false)
         datePicker.backgroundColor = .black
         datePicker.setValue(UIColor.green, forKey: "textColor")
+        
     }
     
     
@@ -33,8 +34,9 @@ class DatePickerViewController: UIViewController {
     @IBAction func goButtonTapped(_ sender: Any) {
         
         // read the picker
-        //delegate?.destinationDateWasChosen(date: datePicker!.datePickerMode)
-        // send picker info back to TimeCircuitsVC
+        let backToThePast = datePicker.date
+        
+        delegate?.destinationDateWasChosen(date: backToThePast)
         dismiss(animated: true, completion: nil)
     }
 
