@@ -58,12 +58,11 @@ class TimeCircuitsViewController: UIViewController {
     
     private func startTimer() {
         
-        timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: update(timer:))
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: update(timer:))
         
         // THIS CODE RUNS BEFORE the block{closure/update} runs
         stopDate = Date(timeIntervalSinceNow: 88.1)
-        //timer?.fire()
-        print("activated timer")
+
     }
     
     private func update(timer: Timer) -> Void {      //this runs continuously with timer, hence 'block'
@@ -74,17 +73,24 @@ class TimeCircuitsViewController: UIViewController {
             if currentTime <= stopDate {
                 let dateInterval = DateInterval(start: currentTime, end: stopDate)
                 mph = 88.0 - dateInterval.duration
-                print(mph)
-                speedLabel.text = "\(mph) m.p.h."
+                speedLabel.text = String(format: "%.1f m.p.h.", mph)
             } else {
                 timer.invalidate()
                 lastTimeDepartedLabel.text = presentTimeLabel.text
                 presentTimeLabel.text = destinationDateLabel.text
-                // show an alert with title "Time Travel Successful" and a message that says "Your new date is (present time)"
+
                 speedLabel.text = "0 m.p.h."
-                print("show alert controller")
+                timerDoneAlert()
             }
         }
+    }
+    
+    private func timerDoneAlert() {
+        
+        let alertC = UIAlertController(title: "Time Travel Successful", message: "You're new date is ... inssert here", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertC.addAction(ok)
+        present(alertC, animated: true)
     }
     
     
