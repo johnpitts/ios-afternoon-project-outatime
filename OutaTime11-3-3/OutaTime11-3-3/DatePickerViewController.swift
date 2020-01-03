@@ -36,6 +36,8 @@ class DatePickerViewController: UIViewController {
         // read the picker
         let backToThePast = datePicker.date
         
+        // let pickerData[pickerName.selectedRow(inComponent: 0)] so you send selectedRow to pickerView with column/component #.  if you are only selecting from one row then you use 0th element
+        
         delegate?.destinationDateWasChosen(date: backToThePast)
         dismiss(animated: true, completion: nil)
     }
